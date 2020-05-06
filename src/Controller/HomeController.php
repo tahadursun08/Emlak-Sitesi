@@ -98,7 +98,7 @@ class HomeController extends AbstractController
                     //->replyTo('fabien@example.com')
                     //->priority(Email::PRIORITY_HIGH)
                     ->subject('AllHoliday Your Request')
-                    //->text('Sending emails is fun again!')
+                    ////->text('Sending emails is fun again!')
                     ->html("Dear ".$form['name']->getData() ."<br>
                             <p>We will evaluate your requests and contact you as soos as possible</p>
                             Thank You for your message <br>
