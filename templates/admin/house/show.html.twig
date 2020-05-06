@@ -1,0 +1,84 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}House{% endblock %}
+
+{% block body %}
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i>House List Page</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="/admin">Home</a></li>
+                        <li><i class="fa fa-bars"></i>House</li>
+                        <li><i class="fa fa-square-o"></i>Show</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- page start-->
+            <h1>House</h1>
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ house.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ house.title }}</td>
+                </tr>
+                <tr>
+                    <th>Keywords</th>
+                    <td>{{ house.keywords }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ house.description }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td><img src="{{ asset("uploads/images/" ~ house.image) }}" height="40" width="40"></td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ house.address }}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{ house.city }}</td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td>{{ house.location }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ house.status }}</td>
+                </tr>
+                <tr>
+                    <th>Created_at</th>
+                    <td>{{ house.createdAt ? house.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Updated_at</th>
+                    <td>{{ house.updatedAt ? house.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="col-md-2">
+                <a href="{{ path('admin_house_index') }} " class="btn btn-default ">Back to list</a>
+            </div>
+            <div class="col-md-2">
+                <a href="{{ path('admin_house_edit', {'id': house.id}) }}" class="btn btn-block btn-info">Edit</a>
+            </div>
+            <div class="col-md-2">
+                {{ include('admin/house/_delete_form.html.twig') }}
+            </div>
+
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+{% endblock %}

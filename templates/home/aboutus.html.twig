@@ -1,0 +1,45 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ setting[0].title }}{% endblock %}
+{% block keywords %}{{ setting[0].keywords }}{% endblock %}
+{% block description %}{{ setting[0].description }}{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Start Blog  -->
+            <div class="aa-blog-area">
+                <div class="aa-blog-content">
+                    <!-- About us -->
+                    <section id="aa-about-us">
+                        <div class="container">
+                            <div class="aa-about-us-area">
+                                <div class="col-md-5">
+                                    <div class="aa-about-us-left">
+                                        <img src="{{ asset('assets') }}/img/blogo.png"  alt="image">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="aa-about-us-right">
+                                        <div class="aa-title">
+                                            <h2>About Us</h2>
+                                            <span></span>
+                                        </div>
+                                        <p>{{ setting[0].aboutus |raw }}</p>
+
+
+                                        <ul>
+                                            <li>Birlikte Daha Güçlüyüz</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- / About us -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}House{% endblock %}
+
+{% block body %}
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa fa-bars"></i>Comment List Page</h3>
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home"></i><a href="/admin">Home</a></li>
+                    <li><i class="fa fa-bars"></i>Comments</li>
+                    <li><i class="fa fa-square-o"></i>Show</li>
+                </ol>
+            </div>
+        </div>
+        <!-- page start-->
+    <h1>Comment</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ comment.id }}</td>
+            </tr>
+            <tr>
+                <th>Subject</th>
+                <td>{{ comment.subject }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ comment.comment }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ comment.status }}</td>
+            </tr>
+            <tr>
+                <th>Ip</th>
+                <td>{{ comment.ip }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ comment.userid }}</td>
+            </tr>
+            <tr>
+                <th>Cread_at</th>
+                <td>{{ comment.creadAt ? comment.creadAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ comment.updatedAt ? comment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Rate</th>
+                <td>{{ comment.rate }}</td>
+            </tr>
+        </tbody>
+    </table>
+        <div class="col-md-2">
+            <a href="{{ path('admin_comment_index') }} " class="btn btn-default ">Back to list</a>
+        </div>
+        <div class="col-md-2">
+            <a href="{{ path('admin_comment_edit', {'id': comment.id}) }}" class="btn btn-block btn-info">Edit</a>
+        </div>
+        <div class="col-md-2">
+            {{ include('admin/comment/_delete_form.html.twig') }}
+        </div>
+        <!-- page end-->
+    </section>
+</section>
+    <!--main content end-->
+{% endblock %}

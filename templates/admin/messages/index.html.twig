@@ -1,0 +1,67 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}EMLAK EV ALIM SATIM{% endblock %}
+
+{% block body %}
+
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="/admin">Home</a></li>
+                        <li><i class="fa fa-bars"></i>Messages</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- page start-->
+            <h1>Messages index</h1>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Status</th>
+                    <th>Ip</th>
+                    <th>Note</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for message in messages %}
+                    <tr>
+                        <td>{{ message.id }}</td>
+                        <td>{{ message.name }}</td>
+                        <td>{{ message.subject }}</td>
+                        <td>{{ message.status }}</td>
+                        <td>{{ message.ip }}</td>
+                        <td>{{ message.note }}</td>
+                        <td>
+                            <a href="{{ path('admin_messages_show', {'id': message.id}) }}" class="btn btn-block btn-primary">Show</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('admin_messages_edit', {'id': message.id}) }}" class="btn btn-block btn-warning">Edit</a>
+                        </td>
+                        <td>
+                            {{ include('admin/messages/_delete_form.html.twig') }}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="10">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+
+        </section>
+    </section>
+    <!--main content end-->
+
+{% endblock %}

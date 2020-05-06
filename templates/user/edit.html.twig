@@ -1,0 +1,30 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-3">
+            {% include('user/usermenu.html.twig') %}
+        </div>
+        <div class="col-md-9">
+            <!-- Start Blog  -->
+
+                <div class="container">
+                    <div class="aa-blog-area">
+                        <div class="aa-blog-content">
+                            </br>
+                            </br>
+
+                            <h1> Edit User Profile Information</h1>
+
+                            {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+{% endblock %}

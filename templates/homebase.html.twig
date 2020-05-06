@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% block description %}En iyi online Emlak{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}ev,alim,satim,sehir,il,ilce{% endblock %}">
+    <meta name="author" content="Taha Dursun">
+
+    <title>{% block title %}Home Property | Home{% endblock %}</title>
+
+    {% block head %}{% include('home/head.html.twig') %}{% endblock %}
+    {% block stylesheet %}{% endblock %}
+</head>
+<body class="aa-price-range">
+<!-- Pre Loader -->
+<div id="aa-preloader-area">
+    <div class="pulse"></div>
+</div>
+<!-- SCROLL TOP BUTTON -->
+<a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
+<!-- END SCROLL TOP BUTTON -->
+{% block header %}{% include('home/header.html.twig') %}{% endblock %}
+{% block sidebar %}{% endblock %}
+{% block slider %}{% endblock %}
+{% block body %}{% endblock %}
+{% block footer %}{% include('home/footer.html.twig') %}{% endblock %}
+{% block javascripts %}{% include('home/javascripts.html.twig') %}{% endblock %}
+</body>
+</html>

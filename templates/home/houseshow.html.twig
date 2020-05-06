@@ -1,0 +1,223 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ house.title }} {% endblock %}
+{% block keywords %}{{ house.keywords }} {% endblock %}
+{% block description %}{{ house.description }} {% endblock %}
+
+{% block body %}
+
+    <script language="JavaScript" type="text/javascript">
+        function openWin( windowURL, windowName, windowFeatures) {
+            window.open( windowURL, windowName, windowFeatures);
+        }
+    </script>
+    <div class="row">
+
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <!-- Start Properties  -->
+            <section id="aa-properties">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="aa-properties-content">
+                                <!-- Start properties content body -->
+                                <div class="aa-properties-details">
+                                    <section id="aa-slider">
+                                        <div class="aa-slider-area">
+                                            <!-- Top slider -->
+                                            <div class="aa-top-slider">
+                                                {% for rs in images %}
+                                                    <img src="{{ asset("uploads/images/" ~ rs.image) }}" style="height: 400px;width: 750px" alt="img">
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <div class="aa-properties-info">
+                                        <div>
+                                            <ul class="nav nav-tabs">
+                                                <li><a href="#two" data-toggle="tab">Detail</a></li>
+                                                <li><a href="#three" data-toggle="tab">Comments</a></li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="two">
+                                                    <p>
+                                                        {{ house.detail |raw }}
+                                                    </p>
+                                                </div>
+                                                <div class="tab-pane" id="three">
+
+                                                    {% for rs in comments %}
+                                                        <h4>{{ rs.subject |raw }}  Rate:[{{ rs.rate}}] </h4>
+                                                        <p>
+                                                            {{ rs.comment |raw }}
+                                                        </p>
+                                                    {% endfor %}
+                                                    {% if app.user %}
+                                                        <h3>Write your comment</h3>
+                                                        <div class="aa-contact-area">
+                                                            <div class="aa-contact-top">
+                                                                {% include('messages.html.twig') %}
+                                                            </div>
+                                                            <div class="aa-contact-bottom">
+                                                                <div class="aa-contact-form">
+                                                                    <form name="comment" action="{{ path('user_new_comment', {'id': house.id}) }}" class="contactform" method="post" role="form">
+
+                                                                        <p class="comment-form-url">
+                                                                            <label for="subject">Subject:</label>
+                                                                            <input type="text" id="comment_subject" name="comment[subject]" maxlength="75">
+                                                                        </p>
+                                                                        <p class="comment-form-url">
+                                                                            <label for="rate">Rate:</label>
+                                                                            <select id="comment_rate" name="comment[rate]" >
+                                                                                <option>1</option>
+                                                                                <option>2</option>
+                                                                                <option>3</option>
+                                                                                <option>4</option>
+                                                                                <option>5</option>
+                                                                            </select>
+                                                                        </p>
+                                                                        <p class="comment-form-comment">
+                                                                            <label for="comment">Message</label>
+                                                                            <textarea id="comment_comment" name="comment[comment]" maxlength="255" cols="45" rows="8" aria-required="true" required="required"></textarea>
+                                                                        </p>
+                                                                        <p class="form-submit">
+                                                                            <input type="hidden" name="token" value="{{ csrf_token('comment') }}" />
+                                                                            <input type="submit" name="submit" class="aa-browse-btn" value="Send Comment">
+                                                                        </p>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% else %}
+                                                        <a href="/loginuser" class="aa-login"><h3>If you want to add comment please Login</h3></a>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- / Properties  -->
+        </div>
+        <div class="col-md-5">
+            <!-- Start Blog  -->
+            </br>
+            </br>
+            <h2>Hotel Details</h2>
+
+            <div class="aa-blog-area">
+                <div class="aa-blog-content">
+
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Title</th>
+                            <td>{{ house.title }}</td>
+                        </tr>
+                        <tr>
+                            <th>Room</th>
+                            <td>{{ house.room }}</td>
+                        </tr>
+                        <tr>
+                            <th>Bed</th>
+                            <td>{{ house.bed }}</td>
+                        </tr>
+                        <tr>
+                            <th>Baths</th>
+                            <td>{{ house.baths }}</td>
+                        </tr>
+                        <!--<tr>
+                            <th>Keywords</th>
+                            <td>{{ house.keywords }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ house.description }}</td>
+                        </tr>-->
+
+                        <tr>
+                            <th>Address</th>
+                            <td>{{ house.address }}</td>
+                        </tr>
+                        <tr>
+                            <th>City</th>
+                            <td>{{ house.city }}</td>
+                        </tr>
+                        <tr>
+                            <th>Location</th>
+                            <td>{{ house.location }}</td>
+                        </tr>
+
+
+                        <tr>
+                            <th>Detail</th>
+                            <td>{{ house.detail |raw }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h2>Property Video</h2>
+            <iframe width="100%" height="480" src="https://www.youtube.com/embed/CegXQps0In4" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Property Map</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6851.201919469417!2d-86.11773906635584!3d33.47324776828677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888bdb60cc49c571%3A0x40451ca6baf275c7!2s36008+AL-77%2C+Talladega%2C+AL+35160%2C+USA!5e0!3m2!1sbn!2sbd!4v1460452919256" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Nearby properties -->
+            <div class="aa-nearby-properties">
+                <div class="aa-title">
+                    <h2>Nearby Properties</h2>
+                    <span></span>
+                </div>
+                <div class="aa-nearby-properties-area">
+                    <div class="row">
+                        {% for rs in houses %}
+                            <div class="col-md-4">
+                                <article class="aa-properties-item">
+                                    <a href="{{ path('house_show',{'id' :rs.id}) }}" class="aa-properties-item-img">
+                                        <img src="{{ asset("uploads/images/" ~ rs.image) }} " style="width: 370px; height: 220px" alt="img">
+                                    </a>
+                                    <div class="aa-tag for-sale">
+                                        For Sale
+                                    </div>
+                                    <div class="aa-properties-item-content">
+                                        <div class="aa-properties-info">
+                                            <span>{{rs.room}} Rooms</span>
+                                            <span>{{rs.bed}} Beds</span>
+                                            <span>{{rs.baths}} Baths</span>
+                                            <span class="fa fa-map-marker">{{rs.city}}</span>
+                                        </div>
+                                        <div class="aa-properties-about">
+                                            <h3><a href="#">{{rs.title}}</a></h3>
+                                            <p>{{rs.description}}</p>
+                                        </div>
+                                        <div class="aa-properties-detial">
+                                        <span class="aa-price">
+                                            {{rs.price}}
+                                        </span>
+                                            <a href="{{ path('house_show',{'id' :rs.id}) }}" class="aa-secondary-btn">View Details</a>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

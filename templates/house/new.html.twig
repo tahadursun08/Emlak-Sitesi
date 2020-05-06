@@ -1,0 +1,31 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-3">
+            {% include('user/usermenu.html.twig') %}
+        </div>
+        <div class="col-md-9">
+            <!-- Start Blog  -->
+
+                <div class="container">
+                    <div class="aa-blog-area">
+                        <div class="aa-blog-content">
+                        </br>
+                        </br>
+                            <h1>Create new House</h1>
+
+                            {{ include('house/_form.html.twig') }}
+
+                            <a href="{{ path('user_house_index') }}"  class="btn btn-default">back to list</a>
+
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+{% endblock %}

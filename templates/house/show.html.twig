@@ -1,0 +1,94 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-3">
+            {% include('user/usermenu.html.twig') %}
+        </div>
+        <div class="col-md-9">
+            <!-- Start Blog  -->
+
+                <div class="container">
+                    <div class="aa-blog-area">
+                        <div class="aa-blog-content">
+
+                            <br>
+                            <br>
+                            <h1>User House Show</h1>
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ house.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Title</th>
+                                    <td>{{ house.title }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Keywords</th>
+                                    <td>{{ house.keywords }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ house.description }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Image</th>
+                                    <td>
+                                        <img src="{{ asset("uploads/images/" ~ house.image) }}" height="100" width="100">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Address</th>
+                                    <td>{{ house.address }}</td>
+                                </tr>
+                                <tr>
+                                    <th>City</th>
+                                    <td>{{ house.city }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Location</th>
+                                    <td>{{ house.location }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td>{{ house.status }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Created_at</th>
+                                    <td>{{ house.createdAt ? house.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Updated_at</th>
+                                    <td>{{ house.updatedAt ? house.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Detail</th>
+                                    <td>{{ house.detail |raw }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Userid</th>
+                                    <td>{{ house.userid }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="col-md-2">
+                                <a href="{{ path('user_house_index') }} " class="btn btn-default ">Back to list</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="{{ path('user_house_edit', {'id': house.id}) }}" class="btn btn-block btn-info">Edit</a>
+                            </div>
+                            <div class="col-md-2">
+                                {{ include('house/_delete_form.html.twig') }}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+{% endblock %}

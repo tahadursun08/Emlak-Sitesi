@@ -1,0 +1,64 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}EMLAK EV ALIM SATIM{% endblock %}
+
+{% block body %}
+
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home"></i><a href="/admin">Home</a></li>
+                    <li><i class="fa fa-bars"></i>Messages</li>
+                </ol>
+            </div>
+        </div>
+        <!-- page start-->
+    <h1>Comment index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Subject</th>
+                <th>Status</th>
+                <th>Userid</th>
+                <th>Houseid</th>
+                <th>Rate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr>
+                <td>{{ comment.id }}</td>
+                <td>{{ comment.subject }}</td>
+                <td>{{ comment.status }}</td>
+                <td><a href="{{ path('admin_user_show', {'id': comment.userid}) }}">{{ comment.name }} {{ comment.surname }} </a></td>
+                <td><a href="{{ path('admin_house_show', {'id': comment.houseid}) }}">{{ comment.title }}</a></td>
+                <td>{{ comment.rate }}</td>
+                <td>
+                    <a href="{{ path('admin_comment_show', {'id': comment.id}) }}" class="btn btn-block btn-primary">Show</a>
+                </td>
+                <td>
+                    <a href="{{ path('admin_comment_edit', {'id': comment.id}) }}" class="btn btn-block btn-warning">Edit</a>
+                </td>
+                <td>
+                    {{ include('admin/comment/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </section>
+</section>
+    <!--main content end-->
+
+{% endblock %}

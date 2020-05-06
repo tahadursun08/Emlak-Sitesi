@@ -1,0 +1,8 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+<div class="col-md-2">
+    <button class="btn btn-block btn-success">{{ button_label|default('Kaydet') }}</button>
+</div>
+{{ form_end(form) }}
+

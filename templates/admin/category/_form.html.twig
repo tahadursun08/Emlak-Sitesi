@@ -1,0 +1,44 @@
+<div >
+    <section class="panel">
+        <header class="panel-heading">
+            Basic Forms
+        </header>
+        <div class="panel-body">
+            <form name="category1" role="form" method="post">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Parent</label>
+                    <select id="category1_parentid" name="category1[parentid]" class="form-control">
+                        <option value="0"> Main Category</option>
+                        {% for cat in categories %}
+                            <option value="{{ cat.id }}"{{ cat.id==category.parentid ? ' Selected': '' }}>{{ cat.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Category Name</label>
+                    <input type="text" id="category1_title" name="category1[title]" value="{{ category.title }}" required="required" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Category Description</label>
+                    <input type="text" id="category1_description" name="category1[description]" value="{{ category.description }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Category Keywords</label>
+                    <input type="text" id="category1_keywords" name="category1[keywords]" value="{{ category.keywords }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Status</label>
+                    <select id="category1_status" name="category1[status]" class="form-control">
+
+                        <option>{{ category.status }}</option>
+                        <option>True</option>
+                        <option>False</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </section>
+</div>
